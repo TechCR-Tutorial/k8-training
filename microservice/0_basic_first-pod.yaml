@@ -1,0 +1,10 @@
+apiVersion: v1            # Kuberneties API Version
+kind: Pod                 # 
+metadata:           
+  name: pod-example       # Name of pod
+spec:
+  containers:             #Container List
+  - name: ubuntu
+    image: ubuntu:trusty
+    command: ["echo"]
+    args: ["Hello World"]

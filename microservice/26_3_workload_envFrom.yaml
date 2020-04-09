@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: position-simulator-config-map
+spec:
+  selector:
+    matchLabels:
+      app: position-simulator-config-map
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: position-simulator-config-map
+    spec:
+      containers:
+      - name: position-simulator
+        image: richardchesterwood/k8s-fleetman-position-simulator:release1
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+        envFrom:
+        - configMapRef:
+            name: global-database-config-v3

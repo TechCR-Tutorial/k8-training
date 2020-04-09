@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: todo-ui
+  labels:
+    app: todo-ui
+spec:
+  containers:
+  - name: todo-ui
+    image: chamlyidunil/todo-ui-prod-docker:v1
+

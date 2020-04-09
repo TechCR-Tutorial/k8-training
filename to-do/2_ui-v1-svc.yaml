@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # Unique key for the service- 
+  # service will communicate through tihs name. so its need to have meaning full name. 
+  name: todo-webapp-ui
+spec:
+  # pod label
+  selector:
+    app: todo-ui
+
+  ports:
+    # name : just to identify trafic type (http/tcp), port - inside port / targetPort - expose port.  
+    #  nodePort - ports to expose ( only avaialble to type: NodePort)
+    - name: http
+      port: 80
+      nodePort: 30180
+  # 3 different types
+  # 1. LoadBalancer - only support in cloud deployment. 
+  # 2. ClusterIP - only available inside cluster. not exposed to outside from cluster. 
+  # 3. NodePort - expose the pod through the node to outside. 
+  type: NodePort
